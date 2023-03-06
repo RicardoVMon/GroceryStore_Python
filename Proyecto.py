@@ -1,17 +1,18 @@
+""" 
+Falta validar el máximo de productos que se compran
+Si es que sólo se puede volver a comprar hasta 20 veces, variable de contador y cerrar ciclo
+Si es que sólo 20 productos en general, variable que lleve cantidad de productos y cerrar ciclo
+"""
+
 # productos (Pulpería)
 
-lays = 500
-huevos = 1200
-gaseosa = 1000
-tortillas = 400
-hersheys = 800
-
-cantidad_lays = 7
-cantidad_huevos = 5
-cantidad_gaseosa = 9
-cantidad_tortillas = 15
-cantidad_hersheys = 2
-
+precio_lays = 500
+precio_huevos = 1200
+precio_gaseosa = 1000
+precio_tortillas = 400
+precio_hersheys = 800
+contador_productos = 0
+total_bruto = 0
 
 
 # bienvenida
@@ -61,17 +62,46 @@ while loop:
             else:
                 preguntar_annio = False
 
-        print('-'*24+'MENÚ DE PRODUCTOS'+'-'*24)
-        print('[1] - Lays\n[2] - Huevos\n[3] - Gaseosa\n[4] - Tortilla\n[5] - Hersheys')
+        # mostrar menú de productos 
+        mostrar_menu = True
+        while mostrar_menu:  
+            print('\n' + '-'*24+'MENÚ DE PRODUCTOS'+ '-'*24)
+            print('\n[1] - Lays\n[2] - Huevos\n[3] - Gaseosa\n[4] - Tortilla\n[5] - Hersheys')
         
-        opcion_producto = input('Digite el número de producto que desea comprar: ')
-        cantidad_producto = input('Digite la cantidad que desea comprar de ese producto: ')
+            # preguntar datos de productos
+            opcion_producto = input('\nDigite el número de producto que desea comprar: ')
+            cantidad_producto = int(input('\nDigite la cantidad que desea comprar de ese producto: '))
 
+            # cálculo según producto
+            if opcion_producto == '1':
+                total_bruto += precio_lays * cantidad_producto
+            
+            elif opcion_producto == '2':
+                total_bruto += precio_huevos * cantidad_producto
 
+            elif opcion_producto == '3':
+                total_bruto += precio_gaseosa * cantidad_producto
+            
+            elif opcion_producto == '4':
+                total_bruto += precio_tortillas * cantidad_producto
+            
+            elif opcion_producto == '5':
+                total_bruto += precio_hersheys * cantidad_producto
+
+            # preguntar si quiere añadir otro producto
+            print('\n¿Desea agregar un nuevo producto?\n\n[1] - Sí\n[2] - No\n')
+            continuar = input('Digite la opción de su preferencia: ')
+            if continuar == '1':
+                print('\nContinuando compra...\n')
+            elif continuar == '2':
+                print('\nCerrando menú de productos...\n')
+                mostrar_menu = False
+            else:
+                print('\n¡ERROR! Digite una opción válida!\n')
 
     elif eleccion == '2':
         
-        print('Gracias por usar nuestro sistema')
+        print('\nGracias por usar nuestro sistema\n')
         loop = False
     
     else:
