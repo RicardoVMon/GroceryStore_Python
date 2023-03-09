@@ -117,16 +117,16 @@ while loop:
 
                     elif continuar == '2':
                         print('\nCerrando menú de productos y generando factura...\n')
-                        print(''24,'FACTURA GENERAL',''25)
+                        print('*'*24,'FACTURA GENERAL','*'*25)
                         print("\nTotal bruto: ₡",total_bruto,'\n')
-                        print(''66 + '\n')
+                        print('*'*66 + '\n')
                         mostrar_menu = False
                         agregar_nuevo = False
 
                     else:
-                        print('\n'+'-'66 + '\n')
+                        print('\n'+'-'*66 + '\n')
                         print('¡ERROR! Digite una opción válida!')
-                        print('\n'+'-'66+'\n')
+                        print('\n'+'-'*66+'\n')
 
             else:
                 print('\n¡ERROR!, Por favor digite una opción de producto válida.')
