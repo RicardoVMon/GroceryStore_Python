@@ -107,7 +107,26 @@ while loop:
                     print("\nTotal hasta el momento: ₡",total_huevos or total_lays)
                     print('\n'+'-'*66)
                 
-                # seccion de agregar nuevo producto (Juan)
+                while agregar_nuevo:
+                    print('\n¿Desea agregar un nuevo producto?\n\n[1] - Sí\n[2] - No\n')
+                    continuar = input('Digite la opción de su preferencia: ')
+
+                    if continuar == '1':
+                        print('\nCONTINUANDO COMPRA...')
+                        agregar_nuevo = False
+
+                    elif continuar == '2':
+                        print('\nCerrando menú de productos y generando factura...\n')
+                        print(''24,'FACTURA GENERAL',''25)
+                        print("\nTotal bruto: ₡",total_bruto,'\n')
+                        print(''66 + '\n')
+                        mostrar_menu = False
+                        agregar_nuevo = False
+
+                    else:
+                        print('\n'+'-'66 + '\n')
+                        print('¡ERROR! Digite una opción válida!')
+                        print('\n'+'-'66+'\n')
 
             else:
                 print('\n¡ERROR!, Por favor digite una opción de producto válida.')
