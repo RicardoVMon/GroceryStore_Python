@@ -1,19 +1,9 @@
-""" 
-Falta validar el máximo de productos que se compran
-Si es que sólo se puede volver a comprar hasta 20 veces, variable de contador y cerrar ciclo
-Si es que sólo 20 productos en general, variable que lleve cantidad de productos y cerrar ciclo
-"""
-
 # productos (Pulpería)
-
 precio_lays = 500
 precio_huevos = 1200
 precio_gaseosa = 1000
 precio_tortillas = 400
 precio_hersheys = 800
-contador_productos = 0
-total_bruto = 0
-
 
 # bienvenida
 print('\nBienvenido a la tienda "Los Pollitos"\n')
@@ -21,6 +11,18 @@ print('\nBienvenido a la tienda "Los Pollitos"\n')
 # loop principal
 loop = True
 while loop:
+    
+    # variables de totales en 0
+    total_bruto = 0
+    total_huevos = 0
+    total_lays = 0
+
+    # variables de selección de productos
+    escogio_huevos = False
+    escogio_lays = False
+    limite_alcanzado = False
+    agregar_nuevo = True
+    
     print('1) Ingresar nueva compra\n2) Salir')
     eleccion = input('\nSeleccione la opción de su preferencia: ')
 
@@ -65,43 +67,54 @@ while loop:
         # mostrar menú de productos 
         mostrar_menu = True
         while mostrar_menu:  
-            print('\n' + '-'*24+'MENÚ DE PRODUCTOS'+ '-'*24)
-            print('\n[1] - Lays\n[2] - Huevos\n[3] - Gaseosa\n[4] - Tortilla\n[5] - Hersheys')
-        
+            print('\n' + '*'*24+' MENÚ DE PRODUCTOS '+ '*'*24)
+            print('\n[1] - Papas Lays: ₡500\n[2] - Kg de huevos: ₡1200')
+            
             # preguntar datos de productos
-            opcion_producto = input('\nDigite el número de producto que desea comprar: ')
-            cantidad_producto = int(input('\nDigite la cantidad que desea comprar de ese producto: '))
-
-            # cálculo según producto
-            if opcion_producto == '1':
-                total_bruto += precio_lays * cantidad_producto
+            opcion_producto = int(input('\nDigite el número de producto que desea comprar: '))
             
-            elif opcion_producto == '2':
-                total_bruto += precio_huevos * cantidad_producto
+            if opcion_producto in range(1,3):
+                cantidad_producto = int(input('\nDigite la cantidad que desea comprar de ese producto: '))
 
-            elif opcion_producto == '3':
-                total_bruto += precio_gaseosa * cantidad_producto
-            
-            elif opcion_producto == '4':
-                total_bruto += precio_tortillas * cantidad_producto
-            
-            elif opcion_producto == '5':
-                total_bruto += precio_hersheys * cantidad_producto
+               # calculos de opcion y cantidad
+                if opcion_producto == 1:
+                    total_lays += precio_lays * cantidad_producto
+                    escogio_lays = True
+                elif opcion_producto == 2:
+                    total_huevos += precio_huevos * cantidad_producto
+                    escogio_huevos = True
+                
+                # si se compraron de los 2 tipos, se cierra ciclo
+                if escogio_lays == True and escogio_huevos == True:
+                    limite_alcanzado = True
+                
+                # llevar cuenta del total bruto
+                total_bruto = total_lays + total_huevos
 
-            # preguntar si quiere añadir otro producto
-            print('\n¿Desea agregar un nuevo producto?\n\n[1] - Sí\n[2] - No\n')
-            continuar = input('Digite la opción de su preferencia: ')
-            if continuar == '1':
-                print('\nContinuando compra...\n')
-            elif continuar == '2':
-                print('\nCerrando menú de productos...\n')
-                mostrar_menu = False
+                # si se alcanza límite de productos, se genera factura          
+                if limite_alcanzado == True:
+                    print('\n¡ATENCIÓN! Ha comprado la cantidad máxima de productos,')
+                    print('generando factura...\n')
+                    print('*'*24,'FACTURA GENERAL','*'*25)
+                    print("\nTotal bruto: ₡",total_bruto,'\n')
+                    print('*'*66 + '\n')
+                    mostrar_menu = False
+                    agregar_nuevo = False
+
+                # si no se alcanza límite, se pregunta si quiere comprar otro producto
+                else:
+                    print('\n'+'-'*66)
+                    print("\nTotal hasta el momento: ₡",total_huevos or total_lays)
+                    print('\n'+'-'*66)
+                
+                # seccion de agregar nuevo producto (Juan)
+
             else:
-                print('\n¡ERROR! Digite una opción válida!\n')
+                print('\n¡ERROR!, Por favor digite una opción de producto válida.')
 
     elif eleccion == '2':
         
-        print('\nGracias por usar nuestro sistema\n')
+        print('\nGracias por comprar en nuestra tienda\n')
         loop = False
     
     else:
