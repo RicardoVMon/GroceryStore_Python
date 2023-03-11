@@ -1,9 +1,6 @@
 # productos (Pulpería)
 precio_lays = 500
 precio_huevos = 1200
-precio_gaseosa = 1000
-precio_tortillas = 400
-precio_hersheys = 800
 
 # bienvenida
 print('\nBienvenido a la tienda "Los Pollitos"\n')
