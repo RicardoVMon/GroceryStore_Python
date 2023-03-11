@@ -96,6 +96,8 @@ while loop:
                     print('\n¡ATENCIÓN! Ha comprado la cantidad máxima de productos,')
                     print('generando factura...\n')
                     print('*'*24,'FACTURA GENERAL','*'*25)
+                    print('\nTotal Lays: ₡', total_lays)
+                    print('Total huevos: ₡', total_huevos)
                     print("\nTotal bruto: ₡",total_bruto,'\n')
                     print('*'*66 + '\n')
                     mostrar_menu = False
@@ -118,6 +120,8 @@ while loop:
                     elif continuar == '2':
                         print('\nCerrando menú de productos y generando factura...\n')
                         print('*'*24,'FACTURA GENERAL','*'*25)
+                        print('\nTotal Lays: ₡', total_lays)
+                        print('Total huevos: ₡', total_huevos)
                         print("\nTotal bruto: ₡",total_bruto,'\n')
                         print('*'*66 + '\n')
                         mostrar_menu = False
