@@ -9,6 +9,34 @@ def validarNombre():
             preguntar_nombre = False
     
     return nombre_cliente
+def validarDia():
+    preguntar_dia = True
+    while preguntar_dia:
+        dia_compra = int(input('\nPor favor, ingrese el número de DÍA de su compra (1-31): '))
+        if dia_compra > 31 :
+            print('\n¡ERROR! El mes no tiene más de 31 días')
+        else:
+            preguntar_dia = False
+    
+    return dia_compra
+def validarMes():
+    preguntar_mes = True
+    while preguntar_mes:
+        mes_compra = int(input('\nPor favor, ingrese el número de MES de su compra (1-12): '))
+        if mes_compra > 12:
+            print('\n¡ERROR! El año no tiene más de 12 meses')
+        else:
+            preguntar_mes = False
+    
+    return mes_compra
+def validarAnnio():
+    preguntar_annio = True
+    while preguntar_annio:
+        annio_compra = int(input('\nPor favor, ingrese el AÑO de su compra (Mayor a 2022): '))
+        if annio_compra < 2023:
+            print('\n¡ERROR! El año debe ser mayor a 2022')
+        else:
+            preguntar_annio = False
 
 # productos (Pulpería)
 precio_lays = 500
@@ -38,34 +66,16 @@ while loop:
     if eleccion == '1':
         
         # ciclo para validar nombre
-        nombreCliente = validarNombre()
+        nombre_cliente = validarNombre()
         
         # ciclo para validar que día sea menor a 31
-        preguntar_dia = True
-        while preguntar_dia:
-            dia_compra = int(input('\nPor favor, ingrese el número de DÍA de su compra (1-31): '))
-            if dia_compra > 31 :
-                print('\n¡ERROR! El mes no tiene más de 31 días')
-            else:
-                preguntar_dia = False
+        dia_compra = validarDia()
 
         # ciclo para validar que meses no sean mayores a 12
-        preguntar_mes = True
-        while preguntar_mes:
-            mes_compra = int(input('\nPor favor, ingrese el número de MES de su compra (1-12): '))
-            if mes_compra > 12:
-                print('\n¡ERROR! El año no tiene más de 12 meses')
-            else:
-                preguntar_mes = False
+        mes_compra = validarMes()
         
         # ciclo para validar que año sea mayor a 2022
-        preguntar_annio = True
-        while preguntar_annio:
-            annio_compra = int(input('\nPor favor, ingrese el AÑO de su compra (Mayor a 2022): '))
-            if annio_compra < 2023:
-                print('\n¡ERROR! El año debe ser mayor a 2022')
-            else:
-                preguntar_annio = False
+        annio_compra = validarAnnio()
 
         # mostrar menú de productos 
         mostrar_menu = True
