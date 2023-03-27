@@ -1,3 +1,15 @@
+def validarNombre():
+
+    preguntar_nombre = True
+    while preguntar_nombre:
+        nombre_cliente = input('\nPor favor, ingrese su nombre: ')
+        if nombre_cliente == "":
+            print('\n¡ERROR! El nombre no puede estar vacío')
+        else:
+            preguntar_nombre = False
+    
+    return nombre_cliente
+
 # productos (Pulpería)
 precio_lays = 500
 precio_huevos = 1200
@@ -26,13 +38,7 @@ while loop:
     if eleccion == '1':
         
         # ciclo para validar nombre
-        preguntar_nombre = True
-        while preguntar_nombre:
-            nombre_cliente = input('\nPor favor, ingrese su nombre: ')
-            if nombre_cliente == "":
-                print('\n¡ERROR! El nombre no puede estar vacío')
-            else:
-                preguntar_nombre = False
+        nombreCliente = validarNombre()
         
         # ciclo para validar que día sea menor a 31
         preguntar_dia = True
