@@ -38,6 +38,7 @@ def validarAnnio():
         else:
             preguntar_annio = False
 
+
 # productos (Pulpería)
 precio_lays = 500
 precio_huevos = 1200
