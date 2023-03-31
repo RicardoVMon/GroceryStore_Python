@@ -1,3 +1,4 @@
+# Validar nombre, día, mes, año y la cantidad que desea comprar
 def validarNombre():
 
     preguntar_nombre = True
@@ -37,6 +38,31 @@ def validarAnnio():
             print('\n¡ERROR! El año debe ser mayor a 2022')
         else:
             preguntar_annio = False
+    return annio_compra
+def validarCantidadComprada():
+    loop = True
+    while loop:
+        cantidad_producto = int(input('\nDigite la cantidad que desea comprar de ese producto: '))
+        if cantidad_producto == 0 or cantidad_producto < 0:
+            print('\nERROR, Debe comprar al menos 1 producto')
+        else:
+            return cantidad_producto    
+
+# Itera sobre lista de 0s y suma los 1s para medir cantidad comprada
+def cantidadMaxima(arreglo_de_ceros):
+    sumatoria = 0
+    for n in range(0,25):
+        sumatoria += arreglo_de_ceros[n]
+
+    if sumatoria == 20:
+        return True
+
+# Suma la posición de acumulado de cliente del arreglo para total bruto
+def totalBruto(arreglo_de_productos):
+    sumatoria = 0
+    for n in range(0,25):
+        sumatoria += arreglo_de_productos[n][2]
+    return sumatoria
 
 
 # productos (Pulpería)
