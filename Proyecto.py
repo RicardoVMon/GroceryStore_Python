@@ -231,22 +231,35 @@ while loop:
                     print("\nTotal hasta el momento: ₡",total_bruto)
                     print('\n'+'-'*66)
                 
-                
+                # Se pregunta si desea agregar otro producto
                 while agregar_nuevo:
                     print('\n¿Desea agregar un nuevo producto?\n\n[1] - Sí\n[2] - No\n')
                     continuar = input('Digite la opción de su preferencia: ')
 
+                    # Si sí, continua comprando
                     if continuar == '1':
                         print('\nCONTINUANDO COMPRA...')
                         agregar_nuevo = False
 
+                    # Si no, se despliega factura
                     elif continuar == '2':
                         print('\nCerrando menú de productos y generando factura...\n')
                         print('*'*24,'FACTURA GENERAL','*'*25)
-                        print('\nTotal Lays: ₡', total_lays)
-                        print('Total huevos: ₡', total_huevos)
-                        print("\nTotal bruto: ₡",total_bruto,'\n')
+                        print('Nombre de cliente: ', nombre_cliente)
+                        print('Fecha: ' + str(dia_compra) + '/' + str(mes_compra) + '/' + str(annio_compra))
+                        
+                        # Loop que imprime todos los productos que tengan un monto acumulado en arreglo de productos
+                        for n in range(0,25):
+                            if productos_tienda[n][2] != 0:
+                                print(productos_tienda[n][0] + ':  ₡' + str(productos_tienda[n][2]))
+
+                        print('Total bruto: ₡', total_bruto)
+                        print('IVA: ₡', calculo_iva)
+                        print('Descuento: ₡', monto_descuento)
+                        print('Total neto: ₡', total_neto)
                         print('*'*66 + '\n')
+                        finalizarCompra()
+
                         mostrar_menu = False
                         agregar_nuevo = False
 
@@ -265,3 +278,4 @@ while loop:
     
     else:
         print('\nPor favor, ingrese una opción válida\n')
+
