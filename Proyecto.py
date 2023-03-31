@@ -138,39 +138,34 @@ productos_escogidos = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 precio_lays = 500
 precio_huevos = 1200
 
-# bienvenida
+# Bienvenida
 print('\nBienvenido a la tienda "Los Pollitos"\n')
 
-# loop principal
+# Loop principal
 loop = True
 while loop:
     
     # variables de totales en 0
     total_bruto = 0
-    total_huevos = 0
-    total_lays = 0
-
-    # variables de selección de productos
-    escogio_huevos = False
-    escogio_lays = False
+    resetearEscogidos(productos_escogidos)
+    resetearAcumulados(productos_tienda)
     limite_alcanzado = False
-    agregar_nuevo = True
     
     print('1) Ingresar nueva compra\n2) Salir')
     eleccion = input('\nSeleccione la opción de su preferencia: ')
 
     if eleccion == '1':
         
-        # ciclo para validar nombre
+        # Ciclo para validar nombre
         nombre_cliente = validarNombre()
         
-        # ciclo para validar que día sea menor a 31
+        # Ciclo para validar que día sea menor a 31
         dia_compra = validarDia()
 
-        # ciclo para validar que meses no sean mayores a 12
+        # Ciclo para validar que meses no sean mayores a 12
         mes_compra = validarMes()
         
-        # ciclo para validar que año sea mayor a 2022
+        # Ciclo para validar que año sea mayor a 2022
         annio_compra = validarAnnio()
 
         # mostrar menú de productos 
