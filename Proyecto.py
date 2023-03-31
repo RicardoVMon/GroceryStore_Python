@@ -64,6 +64,75 @@ def totalBruto(arreglo_de_productos):
         sumatoria += arreglo_de_productos[n][2]
     return sumatoria
 
+# Resetea la lista de 0s y los acumulados de cliente del arreglo
+def resetearEscogidos(arreglo_de_ceros):
+    for n in range(0,25):
+        arreglo_de_ceros[n] = 0
+    return arreglo_de_ceros
+def resetearAcumulados(arreglo_de_productos):
+    for n in range(0,25):
+        arreglo_de_productos[n][2] = 0
+    return arreglo_de_productos
+
+# Mide la cantidad de 1s en el arreglo de ceros y calcula porcentaje según eso sobre el total bruto
+def descuentoCompra(arreglo_de_ceros, total_bruto):
+    sumatoria = 0
+    for n in range(0,25):
+        sumatoria += arreglo_de_ceros[n]
+    
+    if 0 < sumatoria <= 5:
+        monto_descuento = total_bruto * 0.02
+    elif  5 < sumatoria <= 10:
+        monto_descuento = total_bruto * 0.05
+    else:
+        monto_descuento = total_bruto * 0.07
+    
+    return monto_descuento
+
+# Pregunta si desea confirmar compra para guardar o no la factura
+def finalizarCompra():
+    print('¿Desea CONFIRMAR su compra?\n[1] - Sí\n[2] - No\n')
+    eleccion = input('Ingrese la opción de su preferencia: ')
+    if eleccion == '1':
+        print('\n'+'-'*66)
+        print('\nGuardando factura y volviendo al menú principal')
+        print('\n'+'-'*66)
+    elif eleccion == '2':
+        print('\n'+'-'*66)
+        print('\nVolviendo al menú principal sin guardar factura')
+        print('\n'+'-'*66)
+    else:
+        print('\nERROR, Ingrese una opción válida\n')
+
+# ARREGLO DE PRODUCTOS (Nombre, Precio, Acumulado de cliente)
+productos_tienda = [['Arroz', 1200, 0], #0
+                    ['Frijoles', 2000 , 0], #1
+                    ['Lays', 600, 0], #2
+                    ['Huevos', 1500, 0], #3
+                    ['Leche', 1000, 0], #4
+                    ['Hersheys', 800, 0], #5
+                    ['Picaritas', 900, 0], #6
+                    ['Tronaditas', 700, 0], #7
+                    ['Atún', 2500, 0], #8
+                    ['Salmón', 3000, 0], #9
+                    ['Cremoleta', 1400, 0], #10
+                    ['Sal', 300, 0], #11
+                    ['Pimienta', 200, 0], #12
+                    ['Chirulitos', 750, 0], #13
+                    ['Mantequilla', 875, 0], #14
+                    ['Mayonesa', 450, 0], #15
+                    ['Tomate', 550, 0], #16
+                    ['Lechuga', 220, 0], #17
+                    ['Banano', 180, 0], #18
+                    ['Cebolla', 780, 0], #19
+                    ['Brócoli', 2200, 0], #20
+                    ['Jamón', 1625, 0], #21
+                    ['Zanahoria', 920, 0], #22
+                    ['Elote', 1050, 0], #23
+                    ['Limones', 715, 0]] #24
+
+# ARREGLO DE CEROS
+productos_escogidos = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 # productos (Pulpería)
 precio_lays = 500
