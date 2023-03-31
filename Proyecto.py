@@ -134,10 +134,6 @@ productos_tienda = [['Arroz', 1200, 0], #0
 # ARREGLO DE CEROS
 productos_escogidos = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-# productos (Pulpería)
-precio_lays = 500
-precio_huevos = 1200
-
 # Bienvenida
 print('\nBienvenido a la tienda "Los Pollitos"\n')
 
