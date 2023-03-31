@@ -219,11 +219,18 @@ while loop:
                     mostrar_menu = False
                     agregar_nuevo = False
 
-                # si no se alcanza límite, se pregunta si quiere comprar otro producto
+                # Si no se alcanza límite, se realizan calculos de total bruto,
+                # descuento, IVA y total neto para continuar comprando
                 else:
+                    
+                    total_bruto = totalBruto(productos_tienda)
+                    monto_descuento = descuentoCompra(productos_escogidos, total_bruto)
+                    calculo_iva = total_bruto * 0.13
+                    total_neto = total_bruto + calculo_iva - monto_descuento
                     print('\n'+'-'*66)
-                    print("\nTotal hasta el momento: ₡",total_huevos or total_lays)
+                    print("\nTotal hasta el momento: ₡",total_bruto)
                     print('\n'+'-'*66)
+                
                 
                 while agregar_nuevo:
                     print('\n¿Desea agregar un nuevo producto?\n\n[1] - Sí\n[2] - No\n')
