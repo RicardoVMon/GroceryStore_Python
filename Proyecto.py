@@ -164,42 +164,58 @@ while loop:
         # Ciclo para validar que año sea mayor a 2022
         annio_compra = validarAnnio()
 
-        # mostrar menú de productos 
+        # Mostrar menú de compra
         mostrar_menu = True
         while mostrar_menu:  
-            print('\n' + '*'*24+' MENÚ DE PRODUCTOS '+ '*'*24)
-            print('\n[1] - Papas Lays: ₡500\n[2] - Kg de huevos: ₡1200')
             
-            # preguntar datos de productos
-            opcion_producto = int(input('\nDigite el número de producto que desea comprar: '))
+            agregar_nuevo = True
+
+            # Itera sobre arreglo de productos para imprimir nombre y precio
+            print('\n' + '*'*24+' MENÚ DE PRODUCTOS '+ '*'*24 + '\n')
+            for n in range(0,25):
+                print('[' + str(n + 1) + ']-' + productos_tienda[n][0] + ': ₡' + str(productos_tienda[n][1]) )
             
-            if opcion_producto in range(1,3):
-                cantidad_producto = int(input('\nDigite la cantidad que desea comprar de ese producto: '))
-
-               # calculos de opcion y cantidad
-                if opcion_producto == 1:
-                    total_lays += precio_lays * cantidad_producto
-                    escogio_lays = True
-                elif opcion_producto == 2:
-                    total_huevos += precio_huevos * cantidad_producto
-                    escogio_huevos = True
+            # Preguntar el número de objeto que desea
+            numero_producto = int(input('\nDigite el número de producto que desea comprar: '))
+            
+            # Validar que el número de producto exista
+            if numero_producto - 1 in range(0,25): 
                 
-                # si se compraron de los 2 tipos, se cierra ciclo
-                if escogio_lays == True and escogio_huevos == True:
-                    limite_alcanzado = True
-                
-                # llevar cuenta del total bruto
-                total_bruto = total_lays + total_huevos
+                # Preguntar cantidad
+                cantidad_producto = validarCantidadComprada()
 
-                # si se alcanza límite de productos, se genera factura          
+                # Calcula el precio multiplicando cantidad por precio (Busca precio en arreglo de productos)
+                calculo = productos_tienda[numero_producto - 1][1] * cantidad_producto
+                
+                # Agrega el monto de 'calculo' a arreglo de productos en acumulado de cliente
+                productos_tienda[numero_producto - 1][2] += calculo
+                
+                # Agrega un '1' en arreglo de ceros, en la posición que indica usuario en 'numero_producto' 
+                productos_escogidos[numero_producto - 1] = 1
+                
+                # Itera sobre arreglo de ceros sumando para saber si se alcanza límite, si sí, devuelve TRUE
+                limite_alcanzado = cantidadMaxima(productos_escogidos)            
+
+                # Si validación anterior es TRUE, o sea, alcanza límite, pasa esto.         
                 if limite_alcanzado == True:
                     print('\n¡ATENCIÓN! Ha comprado la cantidad máxima de productos,')
                     print('generando factura...\n')
                     print('*'*24,'FACTURA GENERAL','*'*25)
-                    print('\nTotal Lays: ₡', total_lays)
-                    print('Total huevos: ₡', total_huevos)
-                    print("\nTotal bruto: ₡",total_bruto,'\n')
+                    print('Nombre de cliente: ', nombre_cliente)
+                    print('Fecha: ' + str(dia_compra) + '/' + str(mes_compra) + '/' + str(annio_compra))
+                    
+                    # Loop que imprime todos los productos que tengan un monto acumulado en arreglo de productos
+                    for n in range(0,25):
+                        if productos_tienda[n][2] != 0:
+                            print(productos_tienda[n][0] + ':  ₡' + str(productos_tienda[n][2]))
+
+                    print('Total bruto: ₡', total_bruto)
+                    print('IVA: ₡', calculo_iva)
+                    print('Descuento: ₡', monto_descuento)
+                    print('Total neto: ₡', total_neto)
                     print('*'*66 + '\n')
+                    finalizarCompra()
+
                     mostrar_menu = False
                     agregar_nuevo = False
 
